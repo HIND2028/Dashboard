@@ -1,0 +1,98 @@
+﻿@model Dashboard.Models.ViewModel.ProductDetails.AddProductDetailViewModel
+
+@* <p>ProducDetails</p>
+ *@<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="alert alert-success">تفاصيل المنتج</h3>
+            <div class="card">
+                <div class="card-body bordred">
+                    <form asp-action="CreateDetails" method="post" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="" class="form-label">اختر المنتج</label>
+                                <select class="form-select" asp-for="ProductId">
+                                    @foreach (var item in ViewBag.products)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-4 mt-5">
+                                <label for="" class="form-label">صوة المنتج </label>
+                                <input asp-for="Images" class="form-control img-fluid" />
+                                @* <input type="file" class="img-fluid" name="Images" accept="images/*" /> *@
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="" class="form-label">سعر المنتج </label>
+                                <input type="text" class="form-control" asp-for="Price" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="" class="form-label">الكمية  </label>
+                                <input type="text" class="form-control" asp-for="Qty" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="" class="form-label">لون المنتج </label>
+                                <input type="text" class="form-control" asp-for="Color" />
+                            </div>
+                        </div>
+
+                        <div class="row mt-5">
+                            <div class="col">
+                                <button class="btn btn-primary" type="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-success text-white text-center">
+
+                        <th>رقم المنتج </th>
+                        <th>اسم المنتج</th>
+                        <th> اللون </th>
+                        <th>الكمية  </th>
+                        <th>السعر   </th>
+                        <th>  الصورة  </th>
+                        <th colspan="2">إجراء </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in ViewBag.ProductDetails)
+                    {
+                        <tr>
+                            <td>@d.id</td>
+                            <td>@d.name</td>
+                            <td>@d.color</td>
+                            <td>@d.qty</td>
+                            <td>@d.price</td>
+                            <td><img src="@d.img" height="25px" width="25px" /></td>
+                            <td><a asp-action="PDelete" asp-route-drecord_no="@d.id"> <i class="bi bi-archive-fill text-danger"></i></a></td>
+                            <td><a asp-action="PEdit" asp-route-record_no="@d.id"><i class="bi bi-pencil-fill text-success"></i></a> </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col">
+                    @if (TempData["ddel"] != null)
+                    {
+                        if (@TempData["ddel"].ToString() == "True")
+                        {
+                            <h2 class="alert alert-success">تم الحذف</h2>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

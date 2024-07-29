@@ -1,0 +1,58 @@
+﻿@model Dashboard.Models.ViewModel.ProductDetails.EditProductDetailViewModel
+
+ <div class="container">
+    <div class="row">
+        <div class="col">
+            <form asp-action="PUpdate" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <input type="hidden" asp-for="Id" class="form-control" />
+                    <input type="hidden" asp-for="ProductId" class="form-control" />
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">اسم المنتج</label>
+                        <input type="text" asp-for="productName" readonly class="form-control" />
+                        @* <span class="text-danger" asp-validation-for="Name"></span> *@
+                    </div>
+                    <div class="col-sm-6">
+                        @* <label for="" class="form-label">صورة المنتج</label> *@
+                        @* <input type="text" asp-for="Images" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Images"></span>
+                        <div class="col-sm-4 mt-5"> *@
+                        <label for="" class="form-label">صوة المنتج </label>
+                        <input asp-for="Images" class="form-control" />
+                        @* <input type="file" class="img-fluid" name="photo" accept="images/*" /> *@
+
+                        <br />
+                        <label for="" class="form-label">الصوره القديمه </label>
+                        <img src="@Model.OldImage" height="300px" width="300px" />
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">سعر  المنتج</label>
+                        <input type="text" asp-for="Price" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Price"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">كمية  المنتج</label>
+                        <input type="text" asp-for="Qty" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Qty"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">لون  المنتج</label>
+                        <input type="text" asp-for="Color" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Color"></span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-info">
+                            تعديل
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

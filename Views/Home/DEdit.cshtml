@@ -1,0 +1,36 @@
+﻿@model Dashboard.Models.Damegedproducts
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form asp-action="DUpdate" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <input type="hidden" asp-for="Id" class="form-control" />
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">اسم المنتج</label>
+                        <input  type="text" asp-for="product.Name" readonly class="form-control" />
+                        @* <span class="text-danger" asp-validation-for="Name"></span> *@
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">كمية  المنتج</label>
+                        <input type="text" asp-for="Qty" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Qty"></span>
+                    </div>
+                    
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-info">
+                            تعديل
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
